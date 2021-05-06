@@ -1,38 +1,135 @@
-.App {
-  text-align: center;
+html, 
+body {
+  min-height: 100%;
+}
+html {
+  height: 100%;
+}
+body{
+  min-height: 100%;
+  margin: 0;
+  background-color: hsl(180, 52%, 96%);
+  font-family: 'Spartan', sans-serif !important;
+  font-size: 15px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Navbar{
+  min-height: 140px;
+  background-color: hsl(180, 29%, 50%);
+  background-image: url('images/bg-header-desktop.svg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;   
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.Box__search{
+  margin-top: -40px;
+}
+
+.Box__company{
+  margin-top: 1.5rem;
+  position: relative;
+}
+
+.Box__line{
+  width: 5px;
+  height: 100%;
+  border-radius: 6px 0 0 6px;
+  background-color: hsl(180, 29%, 50%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.Badge__new, .Badge__featured{
+  font-size: .6rem !important;
+  padding-top: .3em;
+  margin-left: 10px;
+  color: #ffffff !important;
+}
+.Badge__new{
+  background-color: hsl(180, 29%, 50%) !important;
+}
+.Badge__featured{
+  background-color: hsl(180, 14%, 20%) !important;
+}
+
+.Tag__name__selected, .Tag__name{
+  font-weight: 700;
+  background-color: hsl(180, 31%, 95%) !important;
+  color: hsl(180, 29%, 50%) !important;
+}
+
+.Tag__name{
+  cursor: pointer;
+}
+.Tag__name:hover{
+  color: #ffffff !important;
+  background-color: hsl(180, 29%, 50%) !important;
+}
+
+.Tag__delete{
+  padding-top: .3em;
+  font-weight: 700;
+  color: #ffffff !important;
+  background-color: hsl(180, 29%, 50%) !important;
+}
+.Tag__delete:hover{
+  background-color: hsl(180, 14%, 20%) !important;
+}
+
+.Tag__clear{
+  font-size: .8rem;
+  font-weight: 700;
+  color: hsl(180, 8%, 52%);
+}
+.Tag__clear:hover{
+  color: hsl(180, 29%, 50%);
+  text-decoration: underline;
+}
+
+.Text__company{
+  font-size: .75rem;
+  font-weight: 700;
+  color: hsl(180, 29%, 50%);
+}
+
+.Text__position{
+  font-weight: 700;
+  color: hsl(180, 14%, 20%);
+}
+.Text__position:hover{
+  color: hsl(180, 29%, 50%);
+  cursor: pointer;
+}
+
+.Text__detail{
+  font-size: .75rem;
+  color: hsl(180, 8%, 52%);
+}
+
+@media only screen and (max-width: 768px) {
+  .Navbar{
+    background-image: url('images/bg-header-mobile.svg');
+  }
+  .Box__company{
+    margin-top: 50px !important;
+  }
+  .Box__company img{
+    width: 60px;
+    margin-top: -50px;
+  }
+  .Box__center{
+    margin: 1rem auto;
+    width: 95%;
+    height: 1px;
+    background-color: hsl(180, 8%, 52%, 0.5);
+  }
+  .Text__company, .Text__detail, .Tag__clear{
+    font-size: .9rem !important;
+  }
+  .Tag__name, .Tag__name__selected, .Tag__delete{
+    font-size: .8rem !important;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
