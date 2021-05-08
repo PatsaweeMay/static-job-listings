@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Tag from './Tag';
+import Badge from './Badge';
 
 function Box({ company }) {
 
@@ -9,6 +10,27 @@ function Box({ company }) {
      const tagElements = tagList.map((tag, index) => {
           return <Tag key={index} tag={tag} />;
      });
+
+     let newElement = null;
+     if(company.new){
+          newElement = (
+               <Badge title="NEW!" badgeClass="Badge__new" />
+          );
+     }
+
+     let featuredElement = null;
+     if(company.featured){
+          featuredElement = (
+               <Badge title="FEATURED" badgeClass="Badge__featured" />
+          );
+     }
+
+     let featuredLine = null;
+     if(company.featured){
+          featuredLine = (
+               <div className="Box__line"></div>
+          );
+     }
 
      return (
           <div className="box Box__company">
@@ -19,8 +41,8 @@ function Box({ company }) {
                     <div className="column is-12-mobile is-5-tablet">
                          <p className="mb-2">
                               <span className="Text__company">{company.company}</span>
-                              {company.new ? <span className="tag Badge__new is-rounded">NEW!</span> : ''}
-                              {company.featured ? <span className="tag Badge__featured is-rounded">FEATURED</span> : ''}
+                              {newElement}
+                              {featuredElement}
                          </p>
                          <p className="mb-2"><a className="Text__position">{company.position}</a></p>
                          <p className="Text__detail">{company.postedAt} - {company.contract} - {company.location}</p>
@@ -30,7 +52,7 @@ function Box({ company }) {
                          {tagElements}
                     </div>
                </div>
-               {company.featured ? <div className="Box__line"></div> : ''}
+               {featuredLine}
           </div>
      );
 }

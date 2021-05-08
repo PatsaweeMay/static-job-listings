@@ -14,7 +14,7 @@ function reducer(state, action) {
     return [...state, action.payload];
   }
   if (action.type === 'deleteTag') {
-    return state.filter(tag => tag != action.payload);
+    return state.filter(tag => tag !== action.payload);
   }
   if (action.type === 'clearTag') {
     return [];
@@ -26,11 +26,10 @@ function App() {
   const [tagState, tagDispatch] = useReducer(reducer, []);
 
   const companyElements = companies.filter((company) => {
-    const tagSelected = tagState;
     const tagCompany = [company.role, company.level, ...company.languages];
 
-    if (tagSelected.length) {
-      if (tagSelected.every(tag => tagCompany.includes(tag))) {
+    if (tagState.length) {
+      if (tagState.every(tag => tagCompany.includes(tag))) {
         return true;
       } else {
         return false;
@@ -42,13 +41,19 @@ function App() {
     return <Box key={company.id} company={company} />;
   });
 
+  let searchElement = null;
+  if(tagState.length){
+    searchElement = (
+      <Search />
+    );
+  }
 
   return (
     <tagContext.Provider value={{ tagState, tagDispatch }}>
       <div>
         <Navbar />
         <div className="container is-max-widescreen pb-5 px-5">
-          {tagState.length ? <Search /> : ''}
+          {searchElement}
           {companyElements}
         </div>
       </div>
